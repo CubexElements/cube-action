@@ -1,74 +1,33 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../fort-icon/fort-icon.html">
-<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <!--
 An element providing a solution to no problem in particular.
 
 Example:
 
-    <fort-action></fort-action>
-
-Example:
-
-    <fort-action>
-      <h2>Hello fort-action</h2>
-    </fort-action>
+    <fort-action>iron:icons:star</fort-action>
 
 @demo demo/index.html
-@hero hero.svg
 -->
 
 <dom-module id="fort-action" attributes="size">
   <style include="paper-material-shared-styles">
     :host {
-      @apply(--layout-inline);
-      @apply(--layout-center-center);
       position: relative;
       box-sizing: border-box;
       background: transparent;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       -webkit-tap-highlight-color: transparent;
-      font: inherit;
-      text-transform: uppercase;
-      outline-width: 0;
-      border-radius: 3px;
+      outline: none;
       -moz-user-select: none;
       -ms-user-select: none;
       -webkit-user-select: none;
       user-select: none;
       cursor: pointer;
       z-index: 0;
-
-      @apply(--paper-font-common-base);
-      @apply(--paper-button);
-    }
-
-    :host([hidden]) {
-      display: none !important;
-    }
-
-    :host([raised].keyboard-focus) {
-      font-weight: bold;
-      @apply(--paper-button-raised-keyboard-focus);
-    }
-
-    :host(:not([raised]).keyboard-focus) {
-      font-weight: bold;
-      @apply(--paper-button-flat-keyboard-focus);
-    }
-
-    :host([disabled]) {
-      background: #eaeaea;
-      color: #a8a8a8;
-      cursor: auto;
-      pointer-events: none;
-
-      @apply(--paper-button-disabled);
-    }
-
-    :host([animated]) {
-      @apply(--shadow-transition);
+      padding: 8px;
+      display: inline-block
     }
 
     paper-ripple {
@@ -79,15 +38,14 @@ Example:
     <fort-icon size="[[size]]">
       <content></content>
     </fort-icon>
+    <paper-ripple center class="circle"></paper-ripple>
+
   </template>
 
   <script>
     Polymer(
       {
-        is:        'fort-action',
-        behaviors: [
-          Polymer.PaperButtonBehavior
-        ]
+        is: 'fort-action'
       }
     );
   </script>
