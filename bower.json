@@ -1,5 +1,5 @@
 {
-  "name": "seed-element",
+  "name": "fort-action",
   "version": "1.0.0",
   "authors": [
     "Anonymous <anonymous@example.com>"
@@ -8,12 +8,12 @@
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "fort-action"
   ],
   "private": true,
-  "main": "seed-element.html",
+  "main": "fort-action.html",
   "license": "MIT",
-  "homepage": "https://github.com/FortifiElements/seed-element/",
+  "homepage": "https://github.com/FortifiElements/fort-action/",
   "ignore": [
     "/.*",
     "/test/",
@@ -21,7 +21,8 @@
     "/node_modules/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.6.0"
+    "polymer": "Polymer/polymer#^1.6.1",
+    "fort-icon": "git@github.com:FortifiElements/fort-icon"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
