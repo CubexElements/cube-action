@@ -54,19 +54,17 @@ Example:
         is:           'fort-action',
         properties:   {
           size: {
-            type:     String,
-            value:    '24',
+            type:     Number,
+            value:    24,
             observer: '_sizeChanged'
           }
         },
         _sizeChanged: function ()
                       {
                         // remove any non-numeric characters, ready to append px for styles
-                        var defaultSize = this.properties.size.value;
+                        var defaultSize = 24;
                         this.size = (this.size || defaultSize).replace(/\D/g, '') || defaultSize;
-
-                        this.customStyle['--fort-icon-size'] = this.size + 'px';
-                        this.updateStyles();
+                        this.updateStyles({'--fort-icon-size': this.size + 'px'});
                       },
         _isIcon:      function ()
                       {
