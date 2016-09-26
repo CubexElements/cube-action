@@ -14,29 +14,30 @@ Example:
 -->
 
 <dom-module id="fort-action" attributes="size elevation">
-  <style include="paper-material-shared-styles">
-    :host {
-      position: relative;
-      box-sizing: border-box;
-      background: transparent;
-      -webkit-tap-highlight-color: transparent;
-      outline: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: pointer;
-      z-index: 0;
-      padding: 8px;
-      display: inline-flex;
-      font-size: var(--fort-icon-size);
-    }
-
-    paper-ripple {
-      color: var(--paper-button-ink-color);
-    }
-  </style>
   <template strip-whitespace>
+    <style include="paper-material-shared-styles">
+      :host {
+        position: relative;
+        box-sizing: border-box;
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        padding: 8px;
+        display: inline-flex;
+        font-size: var(--fort-icon-size);
+      }
+
+      paper-ripple {
+        color: var(--paper-button-ink-color);
+      }
+    </style>
+
     <template is="dom-if" if="{{_isIcon()}}">
       <fort-icon size="[[size]]">
         <content></content>
