@@ -38,12 +38,10 @@ Example:
       }
     </style>
 
-    <template restamp is="dom-if" if="{{_isIcon}}">
-      <fort-icon size="[[size]]">
-        <content></content>
-      </fort-icon>
+    <template strip-whitespace is="dom-if" if="{{_icon}}">
+      <fort-icon size="[[size]]">{{_icon}}</fort-icon>
     </template>
-    <template restamp is="dom-if" if="{{!_isIcon}}">
+    <template strip-whitespace is="dom-if" if="{{!_icon}}">
       <content></content>
     </template>
     <paper-ripple center class="circle"></paper-ripple>
@@ -59,7 +57,7 @@ Example:
             observer: '_sizeChanged'
           }
         },
-        _isIcon:      false,
+        _icon:        '',
         _sizeChanged: function ()
                       {
                         // remove any non-numeric characters, ready to append px for styles
@@ -89,7 +87,7 @@ Example:
                           ),
                           ironIconPattern = new RegExp('^[a-z0-9\-]+\:[a-z0-9\-]+$'),
                           text = this.getEffectiveTextContent().trim();
-                        this._isIcon = urlPattern.test(text) || ironIconPattern.test(text) || this.getEffectiveChildren().length;
+                        this._icon = urlPattern.test(text) || ironIconPattern.test(text) ? text : '';
                       }
       }
     );
