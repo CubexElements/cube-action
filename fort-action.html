@@ -87,7 +87,16 @@ Example:
                           ),
                           ironIconPattern = new RegExp('^[a-z0-9\-]+\:[a-z0-9\-]+$'),
                           text = this.getEffectiveTextContent().trim();
-                        this._icon = urlPattern.test(text) || ironIconPattern.test(text) ? text : '';
+
+                        if((urlPattern.test(text) || ironIconPattern.test(text))
+                          && this.getEffectiveChildren().length == 0)
+                        {
+                          this._icon = text;
+                        }
+                        else
+                        {
+                          this._icon = '';
+                        }
                       }
       }
     );
