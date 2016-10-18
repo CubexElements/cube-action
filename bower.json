@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.6.1",
-    "fort-icon": "git@github.com:FortifiElements/fort-icon"
+    "fort-icon": "git@github.com:FortifiElements/fort-icon",
+    "fort-behavior": "git@github.com:FortifiElements/fort-behavior"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

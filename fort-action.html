@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../fort-behavior/fort-text-content-behavior.html">
 <link rel="import" href="../fort-icon/fort-icon.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../paper-material/paper-material-shared-styles.html">
@@ -44,10 +45,10 @@ Example:
       }
     </style>
 
-    <template strip-whitespace is="dom-if" if="{{_icon}}">
-      <fort-icon size="[[size]]">{{_icon}}</fort-icon>
+    <template strip-whitespace is="dom-if" if="[[_icon]]">
+      <fort-icon size="[[size]]">[[_icon]]</fort-icon>
     </template>
-    <template strip-whitespace is="dom-if" if="{{!_icon}}">
+    <template strip-whitespace is="dom-if" if="[[!_icon]]">
       <content></content>
     </template>
     <paper-ripple center class="circle"></paper-ripple>
@@ -55,55 +56,57 @@ Example:
   <script>
     Polymer(
       {
-        is:           'fort-action',
-        properties:   {
+        is:                 'fort-action',
+        properties:         {
           size: {
             type:     Number,
             value:    24,
             observer: '_sizeChanged'
           }
         },
-        _icon:        '',
-        _sizeChanged: function ()
-                      {
-                        // remove any non-numeric characters, ready to append px for styles
-                        var defaultSize = 24;
-                        this.size = (this.size || defaultSize) || defaultSize;
-                        this.updateStyles({'--fort-icon-size': this.size + 'px'});
-                      },
-        ready:        function ()
-                      {
-                        this.async(this._updateType);
-                        new MutationObserver(this._updateType.bind(this))
-                          .observe(this, {childList: true, subtree: true, characterData: true});
-                      },
-        _updateType:  function ()
-                      {
-                        var urlPattern = new RegExp(
-                            /^(https?:\/\/)?/.source + // protocol
-                            '(' +
-                            /(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}/.source + // domain name
-                            /((\d{1,3}\.){3}\d{1,3})/.source + // OR ip (v4) address
-                            /(:\d+)?/.source // port
-                            + ')?' +
-                            /(\.{0,2}?\/[a-z\d%_.~+\/\-]+)/.source + // path
-                            /(\?[;&a-z\d%_.~+=-]*)?/.source + // query string
-                            /(#[-a-z\d_]*)?$/.source // hash
-                          , 'i'
-                          ),
-                          ironIconPattern = new RegExp('^[a-z0-9\-]+\:[a-z0-9\-]+$'),
-                          text = this.getEffectiveTextContent().trim();
+        _icon:              '',
+        _sizeChanged:       function ()
+                            {
+                              // remove any non-numeric characters, ready to append px for styles
+                              var defaultSize = 24;
+                              this.size = (this.size || defaultSize) || defaultSize;
+                              this.updateStyles({'--fort-icon-size': this.size + 'px'});
+                            },
+        attached:           function ()
+                            {
+                              Polymer.RenderStatus.afterNextRender(this, this.__updateProperties.bind(this));
+                              new MutationObserver(this.__updateProperties.bind(this))
+                                .observe(this, {childList: true, subtree: true, characterData: true});
+                            },
+        __updateProperties: function ()
+                            {
+                              var urlPattern = new RegExp(
+                                  /^(https?:\/\/)?/.source + // protocol
+                                  '(' +
+                                  /(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}/.source + // domain name
+                                  /((\d{1,3}\.){3}\d{1,3})/.source + // OR ip (v4) address
+                                  /(:\d+)?/.source // port
+                                  + ')?' +
+                                  /(\.{0,2}?\/[a-z\d%_.~+\/\-]+)/.source + // path
+                                  /(\?[;&a-z\d%_.~+=-]*)?/.source + // query string
+                                  /(#[-a-z\d_]*)?$/.source // hash
+                                , 'i'
+                                ),
+                                ironIconPattern = new RegExp('^[a-z0-9\-]+\:[a-z0-9\-]+$'),
+                                text = this.getInnerText().trim();
 
-                        if((urlPattern.test(text) || ironIconPattern.test(text))
-                          && this.getEffectiveChildren().length == 0)
-                        {
-                          this._icon = text;
-                        }
-                        else
-                        {
-                          this._icon = '';
-                        }
-                      }
+                              if((urlPattern.test(text) || ironIconPattern.test(text))
+                                && this.getEffectiveChildren().length == 0)
+                              {
+                                this._icon = text;
+                              }
+                              else
+                              {
+                                this._icon = '';
+                              }
+                            },
+
+        behaviors: [Polymer.FortTextContentBehavior]
       }
     );
   </script>
