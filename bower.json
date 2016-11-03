@@ -21,12 +21,22 @@
     "/node_modules/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.6.1",
+    "polymer": "Polymer/polymer#2.0-preview",
+    "paper-ripple": "PolymerElements/paper-ripple#2.0-preview",
     "fort-icon": "git@github.com:FortifiElements/fort-icon",
     "fort-behavior": "git@github.com:FortifiElements/fort-behavior"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "web-component-tester": "^4.0.0"
+  },
+  "resolutions": {
+    "iron-flex-layout": "2.0-preview",
+    "iron-icon": "2.0-preview",
+    "polymer": "2.0-preview",
+    "iron-meta": "2.0-preview",
+    "webcomponentsjs": "v1",
+    "paper-ripple": "2.0-preview",
+    "iron-a11y-keys-behavior": "2.0-preview"
   }
 }

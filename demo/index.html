@@ -4,18 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>fort-action Demo</title>
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../fort-action.html">
 </head>
 <body unresolved>
 
-<fort-action id="add-action" size="35">icons:weekend</fort-action>
-<fort-action size="35">
-  /bower_components/fort-icon/demo/mario_logo.svg
-</fort-action>
-<fort-action size="28" elevation="1">
-  action
-</fort-action>
+<fort-action icon="icons:weekend" id="add-action" size="35"></fort-action>
+<fort-action src="/bower_components/fort-icon/demo/mario_logo.svg" size="35"></fort-action>
+<fort-action size="28" elevation="1">action</fort-action>
 
 <script>
   document.getElementById('add-action')

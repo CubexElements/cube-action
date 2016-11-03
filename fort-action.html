@@ -14,9 +14,10 @@ Example:
 @demo demo/index.html
 -->
 
-<dom-module id="fort-action" attributes="size elevation">
+<dom-module id="fort-action" attributes="icon src size elevation">
   <template strip-whitespace>
-    <style include="paper-material-shared-styles">
+    <style include="paper-material-shared-styles"></style>
+    <style>
       :host {
         position: relative;
         box-sizing: border-box;
@@ -45,68 +46,35 @@ Example:
       }
     </style>
 
-    <template strip-whitespace is="dom-if" if="[[_icon]]">
-      <fort-icon size="[[size]]">[[_icon]]</fort-icon>
+    <template strip-whitespace is="dom-if" if="[[icon]]">
+      <fort-icon size="[[size]]" icon="[[icon]]"></fort-icon>
     </template>
-    <template strip-whitespace is="dom-if" if="[[!_icon]]">
-      <content></content>
+    <template strip-whitespace is="dom-if" if="[[src]]">
+      <fort-icon size="[[size]]" src="[[src]]"></fort-icon>
     </template>
+    <slot></slot>
     <paper-ripple center class="circle"></paper-ripple>
   </template>
   <script>
     Polymer(
       {
-        is:                 'fort-action',
-        properties:         {
+        is:           'fort-action',
+        properties:   {
+          icon: {type: String, value: ''},
+          src:  {type: String, value: ''},
           size: {
             type:     Number,
             value:    24,
             observer: '_sizeChanged'
           }
         },
-        _icon:              '',
-        _sizeChanged:       function ()
-                            {
-                              // remove any non-numeric characters, ready to append px for styles
-                              var defaultSize = 24;
-                              this.size = (this.size || defaultSize) || defaultSize;
-                              this.updateStyles({'--fort-icon-size': this.size + 'px'});
-                            },
-        attached:           function ()
-                            {
-                              Polymer.RenderStatus.afterNextRender(this, this.__updateProperties.bind(this));
-                              new MutationObserver(this.__updateProperties.bind(this))
-                                .observe(this, {childList: true, subtree: true, characterData: true});
-                            },
-        __updateProperties: function ()
-                            {
-                              var urlPattern = new RegExp(
-                                  /^(https?:\/\/)?/.source + // protocol
-                                  '(' +
-                                  /(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}/.source + // domain name
-                                  /((\d{1,3}\.){3}\d{1,3})/.source + // OR ip (v4) address
-                                  /(:\d+)?/.source // port
-                                  + ')?' +
-                                  /(\.{0,2}?\/[a-z\d%_.~+\/\-]+)/.source + // path
-                                  /(\?[;&a-z\d%_.~+=-]*)?/.source + // query string
-                                  /(#[-a-z\d_]*)?$/.source // hash
-                                , 'i'
-                                ),
-                                ironIconPattern = new RegExp('^[a-z0-9\-]+\:[a-z0-9\-]+$'),
-                                text = this.getInnerText().trim();
-
-                              if((urlPattern.test(text) || ironIconPattern.test(text))
-                                && this.getEffectiveChildren().length == 0)
-                              {
-                                this._icon = text;
-                              }
-                              else
-                              {
-                                this._icon = '';
-                              }
-                            },
-
-        behaviors: [Polymer.FortTextContentBehavior]
+        _sizeChanged: function ()
+                      {
+                        // remove any non-numeric characters, ready to append px for styles
+                        var defaultSize = 24;
+                        this.size = (this.size || defaultSize) || defaultSize;
+                        this.updateStyles({'--fort-icon-size': this.size + 'px'});
+                      }
       }
     );
   </script>
