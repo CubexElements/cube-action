@@ -23,6 +23,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#2.0-preview",
     "paper-ripple": "PolymerElements/paper-ripple#2.0-preview",
+    "paper-material": "PolymerElements/paper-material#2.0-preview",
     "fort-icon": "git@github.com:FortifiElements/fort-icon",
     "fort-behavior": "git@github.com:FortifiElements/fort-behavior"
   },
@@ -37,6 +38,8 @@
     "iron-meta": "2.0-preview",
     "webcomponentsjs": "v1",
     "paper-ripple": "2.0-preview",
-    "iron-a11y-keys-behavior": "2.0-preview"
+    "iron-a11y-keys-behavior": "2.0-preview",
+    "paper-material": "2.0-preview",
+    "paper-styles": "2.0-preview"
   }
 }
