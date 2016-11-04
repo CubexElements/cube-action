@@ -8,17 +8,16 @@ An element providing a solution to no problem in particular.
 
 Example:
 
-    <fort-action>iron:icons:star</fort-action>
+    <fort-action icon="iron:icons:star"></fort-action>
 
 @demo demo/index.html
 -->
 
-<dom-module id="fort-action" attributes="icon src size elevation">
+<dom-module id="fort-action" attributes="icon src">
   <template strip-whitespace>
     <style>
       :host {
         position: relative;
-        box-sizing: border-box;
         background: transparent;
         -webkit-tap-highlight-color: transparent;
         outline: none;
@@ -28,9 +27,8 @@ Example:
         user-select: none;
         cursor: pointer;
         z-index: 0;
-        padding: 8px;
+        padding: 5px;
         display: inline-flex;
-        font-size: var(--fort-icon-size);
 
         @apply --fort-action-style;
       }
@@ -42,13 +40,16 @@ Example:
       paper-ripple {
         color: var(--paper-button-ink-color);
       }
+
+      :host fort-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     </style>
 
-    <template strip-whitespace is="dom-if" if="[[icon]]">
-      <fort-icon size="[[size]]" icon="[[icon]]"></fort-icon>
-    </template>
-    <template strip-whitespace is="dom-if" if="[[src]]">
-      <fort-icon size="[[size]]" src="[[src]]"></fort-icon>
+    <template strip-whitespace is="dom-if" if="[[_showIcon(icon,src)]]">
+      <fort-icon icon="[[icon]]" src="[[src]]"></fort-icon>
     </template>
     <slot></slot>
     <paper-ripple center class="circle"></paper-ripple>
@@ -56,23 +57,15 @@ Example:
   <script>
     Polymer(
       {
-        is:           'fort-action',
-        properties:   {
+        is:         'fort-action',
+        properties: {
           icon: {type: String, value: ''},
-          src:  {type: String, value: ''},
-          size: {
-            type:     Number,
-            value:    24,
-            observer: '_sizeChanged'
-          }
+          src:  {type: String, value: ''}
         },
-        _sizeChanged: function ()
-                      {
-                        // remove any non-numeric characters, ready to append px for styles
-                        var defaultSize = 24;
-                        this.size = (this.size || defaultSize) || defaultSize;
-                        this.updateStyles({'--fort-icon-size': this.size + 'px'});
-                      }
+        _showIcon:  function (icon, src)
+                    {
+                      return icon || src;
+                    }
       }
     );
   </script>
