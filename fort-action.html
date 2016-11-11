@@ -27,11 +27,15 @@ Example:
         user-select: none;
         cursor: pointer;
         z-index: 0;
-        padding: 5px;
         box-sizing: border-box;
         display: inline-flex;
 
         @apply --fort-action-style;
+      }
+
+      :host([icon],[src]) {
+        width: 24px;
+        height: 24px;
       }
 
       :host:hover {
@@ -40,14 +44,13 @@ Example:
 
       paper-ripple {
         color: var(--paper-button-ink-color);
+        top: -5px;
+        right: -5px;
+        bottom: -5px;
+        left: -5px;
       }
 
-      :host([icon],[src]) {
-        width: 34px;
-        height: 34px;
-      }
-
-      :host([icon],[src]) fort-icon {
+      :host fort-icon {
         display: block;
         width: 100%;
         height: 100%;
@@ -65,8 +68,8 @@ Example:
       {
         is:         'fort-action',
         properties: {
-          icon: {type: String, value: ''},
-          src:  {type: String, value: ''}
+          icon: {type: String, reflectToAttribute: true},
+          src:  {type: String, reflectToAttribute: true}
         },
         _showIcon:  function (icon, src)
                     {

@@ -9,22 +9,31 @@
 </head>
 <body unresolved>
 
-<fort-action icon="icons:weekend" id="add-action" style="width:35px;height:35px"></fort-action>
-<fort-action src="/bower_components/fort-icon/demo/mario_logo.svg" style="width:35px;height:35px"></fort-action>
-<fort-action style="font-size:28px">action</fort-action>
-<fort-action icon="icons:weekend" id="add-action" style="width:65px;height:65px"></fort-action>
-<fort-action icon="icons:weekend" id="add-action"></fort-action>
-<fort-action style="font-size:12px">action</fort-action>
+<style>
+  #set3 > * {
+    width: 100px;
+    height: 100px;
+  }
+</style>
 
-<script>
-  document.getElementById('add-action')
-          .addEventListener(
-            'tap', function ()
-            {
-              alert('clicked');
-            }
-          );
-</script>
+<div id="set1">
+  <fort-action icon="icons:weekend" id="tap" style="width:35px;height:35px"></fort-action>
+  <fort-action src="/bower_components/fort-icon/demo/mario_logo.svg" style="width:35px;height:35px"></fort-action>
+  <fort-action style="font-size:28px">action</fort-action>
+  <fort-action icon="icons:weekend" style="width:65px;height:65px"></fort-action>
+  <fort-action icon="icons:weekend"></fort-action>
+  <fort-action style="font-size:12px">action</fort-action>
+</div>
+
+<div id="set2">
+  <fort-action icon="icons:weekend"></fort-action>
+  <fort-icon icon="icons:weekend"></fort-icon>
+</div>
+
+<div id="set3">
+  <fort-action icon="icons:weekend"></fort-action>
+  <fort-icon icon="icons:weekend"></fort-icon>
+</div>
 
 </body>
 </html>
