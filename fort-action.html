@@ -13,7 +13,7 @@ Example:
 @demo demo/index.html
 -->
 
-<dom-module id="fort-action" attributes="icon src">
+<dom-module id="fort-action" attributes="icon src size same-font">
   <template strip-whitespace>
     <style>
       :host {
@@ -29,14 +29,15 @@ Example:
         z-index: 0;
         box-sizing: content-box;
         display: inline-flex;
+        align-items: center;
+        font-size: calc(var(--fort-icon-size, 24px) * 0.6);
 
         padding: 5px;
         @apply --fort-action-style;
       }
 
-      :host([icon],[src]) {
-        width: 24px;
-        height: 24px;
+      :host([same-font]){
+        font-size: var(--fort-icon-size, 24px);
       }
 
       :host:hover {
@@ -46,18 +47,10 @@ Example:
       paper-ripple {
         color: var(--paper-button-ink-color);
       }
-
-      :host fort-icon {
-        display: block;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-      }
-
     </style>
 
     <template strip-whitespace is="dom-if" if="[[_showIcon(icon,src)]]">
-      <fort-icon icon="[[icon]]" src="[[src]]"></fort-icon>
+      <fort-icon icon="[[icon]]" src="[[src]]" size="[[size]]"></fort-icon>
     </template>
     <slot></slot>
     <paper-ripple center class="circle"></paper-ripple>
@@ -65,15 +58,27 @@ Example:
   <script>
     Polymer(
       {
-        is:         'fort-action',
-        properties: {
-          icon: {type: String, reflectToAttribute: true},
-          src:  {type: String, reflectToAttribute: true}
+        is:            'fort-action',
+        properties:    {
+          icon: {type: String, notify: true, reflectToAttribute: true},
+          src:  {type: String, notify: true, reflectToAttribute: true},
+          size: {
+            type:     Number,
+            notify:   true,
+            observer: '_styleChanged'
+          }
         },
-        _showIcon:  function (icon, src)
-                    {
-                      return icon || src;
-                    }
+        _showIcon:     function (icon, src)
+                       {
+                         return icon || src;
+                       },
+        _styleChanged: function ()
+                       {
+                         if(this.size)
+                         {
+                           this.updateStyles({'--fort-icon-size': this.size + 'px'})
+                         }
+                       }
       }
     );
   </script>

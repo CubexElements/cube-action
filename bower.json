@@ -38,6 +38,7 @@
     "webcomponentsjs": "v1",
     "paper-ripple": "2.0-preview",
     "iron-a11y-keys-behavior": "2.0-preview",
-    "paper-styles": "2.0-preview"
+    "paper-styles": "2.0-preview",
+    "iron-ajax": "2.0-preview"
   }
 }

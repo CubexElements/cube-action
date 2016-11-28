@@ -9,20 +9,14 @@
 </head>
 <body unresolved>
 
-<style>
-  #set3 > * {
-    width: 100px;
-    height: 100px;
-  }
-</style>
-
 <div id="set1">
-  <fort-action icon="icons:weekend" id="tap" style="width:35px;height:35px"></fort-action>
-  <fort-action src="/bower_components/fort-icon/demo/mario_logo.svg" style="width:35px;height:35px"></fort-action>
+  <fort-action icon="icons:weekend" id="tap" size="35"></fort-action>
+  <fort-action src="/bower_components/fort-icon/demo/mario_logo.svg" size="35"></fort-action>
   <fort-action style="font-size:28px">action</fort-action>
-  <fort-action icon="icons:weekend" style="width:65px;height:65px"></fort-action>
+  <fort-action icon="icons:weekend" size="65"></fort-action>
   <fort-action icon="icons:weekend"></fort-action>
   <fort-action style="font-size:12px">action</fort-action>
+  <fort-action size="12" same-font>action</fort-action>
 </div>
 
 <div id="set2">
@@ -31,8 +25,34 @@
 </div>
 
 <div id="set3">
-  <fort-action icon="icons:weekend"></fort-action>
-  <fort-icon icon="icons:weekend"></fort-icon>
+  <fort-action size="100" icon="icons:weekend"></fort-action>
+  <fort-icon size="100" icon="icons:weekend"></fort-icon>
+</div>
+
+<div id="set4">
+  <fort-action size="100" icon="icons:weekend">Icon and Text</fort-action>
+</div>
+<div id="set5">
+  <fort-action size="50" icon="icons:weekend">Icon and Text</fort-action>
+</div>
+<div id="set6">
+  <fort-action size="25" icon="icons:weekend">Icon and Text</fort-action>
+</div>
+<div id="set7">
+  <fort-action size="60">Text and
+    <fort-icon icon="icons:weekend"></fort-icon>
+  </fort-action>
+  <fort-action size="60" same-font>Text and
+    <fort-icon icon="icons:weekend"></fort-icon>
+  </fort-action>
+</div>
+<div id="set8">
+  <fort-action size="60">Text and
+    <fort-icon size="100" icon="icons:weekend"></fort-icon>
+  </fort-action>
+  <fort-action size="60" same-font>Text and
+    <fort-icon size="100" icon="icons:weekend"></fort-icon>
+  </fort-action>
 </div>
 
 </body>
