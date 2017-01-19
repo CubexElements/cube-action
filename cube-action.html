@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../fort-behavior/fort-text-content-behavior.html">
-<link rel="import" href="../fort-icon/fort-icon.html">
+<link rel="import" href="../cube-behavior/cube-text-content-behavior.html">
+<link rel="import" href="../cube-icon/cube-icon.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <!--
@@ -8,12 +8,12 @@ An element providing a solution to no problem in particular.
 
 Example:
 
-    <fort-action icon="iron:icons:star"></fort-action>
+    <cube-action icon="iron:icons:star"></cube-action>
 
 @demo demo/index.html
 -->
 
-<dom-module id="fort-action" attributes="icon src size same-font">
+<dom-module id="cube-action" attributes="icon src size same-font">
   <template strip-whitespace>
     <style>
       :host {
@@ -30,18 +30,18 @@ Example:
         box-sizing: content-box;
         display: inline-flex;
         align-items: center;
-        font-size: calc(var(--fort-icon-size, 24px) * 0.6);
+        font-size: calc(var(--cube-icon-size, 24px) * 0.6);
 
         padding: 5px;
-        @apply --fort-action-style;
+        @apply --cube-action-style;
       }
 
       :host([same-font]) {
-        font-size: var(--fort-icon-size, 24px);
+        font-size: var(--cube-icon-size, 24px);
       }
 
       :host:hover {
-        @apply --fort-action-hover-style;
+        @apply --cube-action-hover-style;
       }
 
       paper-ripple {
@@ -60,7 +60,7 @@ Example:
 
     <div id="container">
       <template strip-whitespace is="dom-if" if="[[_showIcon(icon,src)]]">
-        <fort-icon icon="[[icon]]" src="[[src]]" size="[[size]]"></fort-icon>
+        <cube-icon icon="[[icon]]" src="[[src]]" size="[[size]]"></cube-icon>
       </template>
       <div id="slottedContent">
         <slot></slot>
@@ -71,7 +71,7 @@ Example:
   <script>
     Polymer(
       {
-        is:            'fort-action',
+        is:            'cube-action',
         properties:    {
           icon: {type: String, notify: true, reflectToAttribute: true},
           src:  {type: String, notify: true, reflectToAttribute: true},
@@ -89,7 +89,7 @@ Example:
                        {
                          if(this.size)
                          {
-                           this.updateStyles({'--fort-icon-size': this.size + 'px'})
+                           this.updateStyles({'--cube-icon-size': this.size + 'px'})
                          }
                        }
       }
