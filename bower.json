@@ -21,24 +21,13 @@
     "/node_modules/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#2.0-preview",
-    "paper-ripple": "PolymerElements/paper-ripple#2.0-preview",
-    "cube-icon": "git@github.com:CubexElements/cube-icon",
-    "cube-behavior": "git@github.com:CubexElements/cube-behavior"
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "paper-ripple": "PolymerElements/paper-ripple#1.9 - 2",
+    "cube-icon": "CubexElements/cube-icon",
+    "cube-behavior": "CubexElements/cube-behavior"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "web-component-tester": "^4.0.0"
-  },
-  "resolutions": {
-    "iron-flex-layout": "2.0-preview",
-    "iron-icon": "2.0-preview",
-    "polymer": "2.0-preview",
-    "iron-meta": "2.0-preview",
-    "webcomponentsjs": "v1",
-    "paper-ripple": "2.0-preview",
-    "iron-a11y-keys-behavior": "2.0-preview",
-    "paper-styles": "2.0-preview",
-    "iron-ajax": "2.0-preview"
+    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
+    "web-component-tester": "^6.0.0"
   }
 }
