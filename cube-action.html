@@ -13,7 +13,7 @@ Example:
 @demo demo/index.html
 -->
 
-<dom-module id="cube-action" attributes="icon src size same-font">
+<dom-module id="cube-action" attributes="icon src size same-font ripple-center ripple-circle">
   <template strip-whitespace>
     <style>
       :host {
@@ -66,7 +66,7 @@ Example:
         <slot></slot>
       </div>
     </div>
-    <paper-ripple center class="circle"></paper-ripple>
+    <paper-ripple center="[[rippleCenter]]" class$="[[_rippleCircle(rippleCircle)]]"></paper-ripple>
   </template>
   <script>
     Polymer(
@@ -79,7 +79,10 @@ Example:
             type:     Number,
             notify:   true,
             observer: '_styleChanged'
-          }
+          },
+
+          rippleCenter: {type: Boolean},
+          rippleCircle: {type: Boolean}
         },
         _showIcon:     function (icon, src)
                        {
@@ -89,8 +92,12 @@ Example:
                        {
                          if(this.size)
                          {
-                           this.updateStyles({'--cube-icon-size': this.size + 'px'})
+                           this.updateStyles({'--cube-icon-size': this.size + 'px'});
                          }
+                       },
+        _rippleCircle: function (rippleCircle)
+                       {
+                         return rippleCircle ? 'circle' : '';
                        }
       }
     );
