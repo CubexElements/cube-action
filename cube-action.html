@@ -16,7 +16,7 @@ Example:
 <dom-module id="cube-action" attributes="icon src size same-font ripple-center ripple-circle">
   <template strip-whitespace>
     <style>
-      :host {
+       :host {
         position: relative;
         background: transparent;
         -webkit-tap-highlight-color: transparent;
@@ -31,16 +31,15 @@ Example:
         display: inline-flex;
         align-items: center;
         font-size: calc(var(--cube-icon-size, 24px) * 0.6);
-
         padding: 5px;
         @apply --cube-action-style;
       }
 
-      :host([same-font]) {
+       :host([same-font]) {
         font-size: var(--cube-icon-size, 24px);
       }
 
-      :host:hover {
+       :host:hover {
         @apply --cube-action-hover-style;
       }
 
@@ -70,36 +69,37 @@ Example:
   </template>
   <script>
     Polymer(
+    {
+      is: 'cube-action',
+      properties:
       {
-        is:            'cube-action',
-        properties:    {
-          icon: {type: String, notify: true, reflectToAttribute: true},
-          src:  {type: String, notify: true, reflectToAttribute: true},
-          size: {
-            type:     Number,
-            notify:   true,
-            observer: '_styleChanged'
-          },
-
-          rippleCenter: {type: Boolean},
-          rippleCircle: {type: Boolean}
+        icon: { type: String, notify: true, reflectToAttribute: true },
+        src: { type: String, notify: true, reflectToAttribute: true },
+        size:
+        {
+          type: Number,
+          notify: true,
+          observer: '_styleChanged'
         },
-        _showIcon:     function (icon, src)
-                       {
-                         return icon || src;
-                       },
-        _styleChanged: function ()
-                       {
-                         if(this.size)
-                         {
-                           this.updateStyles({'--cube-icon-size': this.size + 'px'});
-                         }
-                       },
-        _rippleCircle: function (rippleCircle)
-                       {
-                         return rippleCircle ? 'circle' : '';
-                       }
+
+        rippleCenter: { type: Boolean },
+        rippleCircle: { type: Boolean }
+      },
+      _showIcon: function(icon, src)
+      {
+        return icon || src;
+      },
+      _styleChanged: function()
+      {
+        if(this.size)
+        {
+          this.updateStyles({ '--cube-icon-size': this.size + 'px' });
+        }
+      },
+      _rippleCircle: function(rippleCircle)
+      {
+        return rippleCircle ? 'circle' : '';
       }
-    );
+    });
   </script>
 </dom-module>
