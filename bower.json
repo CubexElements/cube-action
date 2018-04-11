@@ -24,7 +24,7 @@
     "polymer": "Polymer/polymer#1.9 - 2",
     "paper-ripple": "PolymerElements/paper-ripple#1.9 - 2",
     "cube-icon": "CubexElements/cube-icon",
-    "cube-behavior": "CubexElements/cube-behavior"
+    "cube-behaviors": "CubexElements/cube-behaviors"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
