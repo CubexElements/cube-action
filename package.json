@@ -15,7 +15,6 @@
   "license": "MIT",
   "homepage": "https://github.com/CubexElements/cube-action/",
   "dependencies": {
-    "@kubex/cube-behaviors": "^3.0.0-pre.1",
     "@kubex/cube-icon": "^3.0.0-pre.1",
     "@polymer/paper-ripple": "^3.0.0-pre.1",
     "@polymer/polymer": "^3.0.0-pre.1"
