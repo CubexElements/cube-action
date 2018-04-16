@@ -1,6 +1,6 @@
-import '@kubex/cube-icon/cube-icon.js';
-import '@polymer/paper-ripple/paper-ripple.js';
 import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-ripple/paper-ripple.js';
+import '@kubex/cube-icon/cube-icon.js';
 
 /**
  An element providing a solution to no problem in particular.
